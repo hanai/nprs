@@ -34,6 +34,11 @@ const goto = async (path) => {
 
 const closeBrowser = async () => {
   const browser = await browserPromise;
+
+  await pagePool.drain().then(() => {
+    pagePool.clear();
+  });
+
   browser.close();
 };
 
