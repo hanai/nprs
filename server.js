@@ -4,7 +4,7 @@ const browser = require('./browser');
 const minimize = require('./minimize');
 const store = require('./store');
 
-const useCache = process.env.NODE_ENV === 'production' && false;
+const useCache = process.env.NODE_ENV === 'production';
 
 const server = http.createServer(async (req, res) => {
   const {

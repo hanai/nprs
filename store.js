@@ -1,6 +1,8 @@
 const Redis = require('ioredis');
 
-const redis = new Redis();
+const { REDIS_URL } = process.env;
+
+const redis = new Redis(REDIS_URL);
 
 const EXPIRE = 60 * 60 * 24 * 3;
 

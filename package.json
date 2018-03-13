@@ -6,7 +6,8 @@
   "author": "Hanai",
   "license": "MIT",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint ./"
+    "lint": "./node_modules/.bin/eslint ./",
+    "start": "node server.js"
   },
   "dependencies": {
     "debug": "^3.1.0",

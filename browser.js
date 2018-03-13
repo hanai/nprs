@@ -4,9 +4,7 @@ const {
   createPagePool,
 } = require('./page');
 
-const host = 'm.bilibili.com';
-const protocol = 'https';
-const port = 443;
+const { HOST, PROTOCOL, PORT } = process.env;
 
 const browserPromise = puppeteer.launch({
   headless: true,
@@ -15,7 +13,7 @@ const browserPromise = puppeteer.launch({
 const pagePool = createPagePool(browserPromise);
 
 const goto = async (path) => {
-  const url = `${protocol}://${host}:${port}${path}`;
+  const url = `${PROTOCOL}://${HOST}:${PORT}${path}`;
   const page = await pagePool.acquire();
 
   return page.goto(url, {
