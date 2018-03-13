@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const { getWSDebuggerUrl } = require('./chrome');
 
 const {
   createPagePool,
@@ -6,8 +7,14 @@ const {
 
 const { HOST, PROTOCOL, PORT } = process.env;
 
-const browserPromise = puppeteer.launch({
-  headless: true,
+const browserPromise = getWSDebuggerUrl.then((url) => {
+  return puppeteer.connect({
+    browserWSEndpoint: url,
+    ignoreHTTPSErrors: true,
+  })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 const pagePool = createPagePool(browserPromise);

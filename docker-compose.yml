@@ -5,14 +5,14 @@ services:
       - ./env/common.env
     build:
       context: .
-      args:
-        NPM_REGISTRY: "https://registry.npm.taobao.org"
     ports:
       - "8000:8000"
     depends_on:
       - redis
+      - chrome
     links:
       - redis
+      - chrome
     environment:
       HOST: "m.bilibili.com"
       PORT: 443
@@ -23,3 +23,8 @@ services:
     image: redis:3.2-alpine
     expose:
       - "6379"
+  chrome:
+    build:
+      context: ./chrome
+    expose:
+      - "9222"
