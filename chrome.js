@@ -1,6 +1,8 @@
 const rq = require('request-promise-native');
 
-const getVersion = () => (rq.get('http://chrome:9222/json/version')
+const { CHROME_URL } = process.env;
+
+const getVersion = () => (rq.get(`${CHROME_URL}/json/version`)
   .then((res) => {
     const version = JSON.parse(res);
     return version;

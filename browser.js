@@ -10,10 +10,10 @@ const { HOST, PROTOCOL, PORT } = process.env;
 const browserPromise = getWSDebuggerUrl().then(url => puppeteer.connect({
   browserWSEndpoint: url,
   ignoreHTTPSErrors: true,
-})
+}))
   .catch((err) => {
     console.log(err);
-  }));
+  });
 
 const pagePool = createPagePool(browserPromise);
 

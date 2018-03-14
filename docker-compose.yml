@@ -9,12 +9,16 @@ services:
       - "8000:8000"
     depends_on:
       - redis
-    network_mode: "host"
+      - chrome
+    links:
+      - redis
+      - chrome
     environment:
       HOST: "m.bilibili.com"
       PORT: 443
       PROTOCOL: "https"
-      REDIS_URL: "redis://localhost:6379/0"
+      REDIS_URL: "redis://redis:6379/0"
+      CHROME_URL: "http://chrome:9222"
     command: ["yarn", "run", "start"]
   redis:
     image: redis:3.2-alpine
