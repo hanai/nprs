@@ -5,5 +5,5 @@ google-chrome \
   --headless \
   --disable-gpu \
   --disable-setuid-sandbox \
-  --no-sandbox
+  --no-sandbox \
   --remote-debugging-port=19222
